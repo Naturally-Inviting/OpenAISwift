@@ -1,12 +1,3 @@
-[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fadamrushy%2FOpenAISwift%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/adamrushy/OpenAISwift)
-[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fadamrushy%2FOpenAISwift%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/adamrushy/OpenAISwift)
-
-![](https://img.shields.io/github/license/adamrushy/OpenAISwift)
-![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/adamrushy/OpenAISwift/swift.yml?branch=main)
-[![](https://img.shields.io/badge/SPM-supported-DE5C43.svg?style=flat)](https://swift.org/package-manager/)
-
-[![Twitter Follow](https://img.shields.io/twitter/follow/adam9rush?style=social)](https://twitter.com/adam9rush)
-
 # OpenAI API Client Library in Swift
 
 This is a community-maintained library to access OpenAI HTTP API's. The full API docs can be found here:
@@ -56,6 +47,7 @@ openAI.sendCompletion(with: "A random emoji", model: .gpt3(.ada)) { result in //
     // switch on result to get the response or error
 }
 ```
+
 For a full list of the supported models see [OpenAIModelType.swift](https://github.com/adamrushy/OpenAISwift/blob/main/Sources/OpenAISwift/Models/OpenAIModelType.swift). For more information on the models see the [OpenAI API Documentation](https://beta.openai.com/docs/models).
 
 OpenAISwift also supports Swift concurrency so you can use Swift’s async/await syntax to fetch completions.
@@ -68,7 +60,7 @@ do {
 }
 ```
 
-The latest `gpt-3.5-turbo` model is available too : 
+The latest `gpt-3.5-turbo` model is available too :
 
 ```swift
 func chat() async {
@@ -79,9 +71,9 @@ func chat() async {
             ChatMessage(role: .assistant, content: "The Los Angeles Dodgers won the World Series in 2020."),
             ChatMessage(role: .user, content: "Where was it played?")
         ]
-                    
+
         let result = try await openAI.sendChat(with: chat)
-        
+
         print(result.choices.first?.message?.content ?? "Nothing")
     } catch {
         print("Something went wrong")

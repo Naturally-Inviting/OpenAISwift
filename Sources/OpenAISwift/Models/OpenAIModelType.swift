@@ -9,6 +9,7 @@ import Foundation
 
 /// The type of model used to generate the output
 public enum OpenAIModelType {
+    case gpt4(GPT4)
     /// ``GPT3`` Family of Models
     case gpt3(GPT3)
     
@@ -23,11 +24,22 @@ public enum OpenAIModelType {
     
     public var modelName: String {
         switch self {
+        case .gpt4(let model): return model.rawValue
         case .gpt3(let model): return model.rawValue
         case .codex(let model): return model.rawValue
         case .feature(let model): return model.rawValue
         case .chat(let model): return model.rawValue
         }
+    }
+
+    /// GPT-4 is a large multimodal model (accepting text inputs and emitting text outputs today,
+    /// with image inputs coming in the future) that can solve difficult problems
+    /// with greater accuracy than any of our previous models,
+    /// thanks to its broader general knowledge and advanced reasoning capabilities.
+    ///
+    /// [GPT-4 Models OpenAI API Docs](https://beta.openai.com/docs/models/gpt-4)
+    public enum GPT4: String {
+        case gpt4 = "gpt-4"
     }
     
     /// A set of models that can understand and generate natural language
